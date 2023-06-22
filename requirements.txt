@@ -1,0 +1,6 @@
+Flask==2.0.2
+pybind11
+cppimport
+jupyter
+numpy
+scikit-learn
