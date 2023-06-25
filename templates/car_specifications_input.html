@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Car Price Prediction</title>
+  <style>
+    body {
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+    }
+    
+    h1 {
+      color: #333333;
+      text-align: center;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    
+    select, input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #cccccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+    
+    input[type="radio"] {
+      margin-right: 5px;
+    }
+    
+    .button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      background-color: #4CAF50;
+      color: #ffffff;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Car Price Prediction</h1>
+    <form method="post" action="{{url_for('predict')}}">
+      <label for="carAge">Car Age:</label>
+      <input type="number" id="carAge" name="carAge" required>
+      
+      <label for="kmDriven">KM Driven:</label>
+      <input type="number" id="kmDriven" name="kmDriven" required>
+      
+      <label for="fuelType">Fuel Type:</label>
+      <select id="fuelType" name="fuelType" required size="2">
+        <option value="Diesel">Diesel</option>
+        <option value="Petrol">Petrol</option>
+      </select>
+      
+      <label for="horsepower">Horsepower:</label>
+      <input type="number" id="horsepower" name="horsepower" required>
+      
+      <label for="color">Color:</label>
+      <select id="color" name="color" required size="5">
+        <option value="Silver">Silver</option>
+        <option value="Grey">Grey</option>
+        <option value="Black">Black</option>
+        <option value="Blue">Blue</option>
+        <option value="Red">Red</option>
+      </select>
+      
+      <label for="automatics">Automatics:</label>
+      <select id="automatics" name="automatics" required>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+      
+      <label for="cc">CC:</label>
+      <input type="number" id="cc" name="cc" required>
+      
+      <label for="doors">Doors:</label>
+      <input type="number" id="doors" name="doors" required>
+
+      <label for="cylinders">Cylinders:</label>
+      <input type="number" id="cylinders" name="cylinders" required>
+      
+      <label for="gears">Gears (maximum 6):</label>
+      <input type="number" id="gears" name="gears" min="1" max="6" required>
+      
+      <label for="manufacturerGuarantee">Manufacturer Guarantee:</label>
+      <select id="manufacturerGuarantee" name="manufacturerGuarantee" required>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+      
+      <label for="antilockBrakes">Antilock Brakes:</label>
+      <select id="antilockBrakes" name="antilockBrakes" required>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+      
+      <label for="driverAirbags">Driver Airbags:</label>
+      <select id="driverAirbags" name="driverAirbags" required>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+      
+      <label for="passengerAirbags">Passenger Airbags:</label>
+      <select id="passengerAirbags" name="passengerAirbags" required>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+      
+      <label for="airConditioner">Air Conditioner:</label>
+      <select id="airConditioner" name="airConditioner" required>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+      
+      <label for="cdPlayer">CD Player:</label>
+      <select id="cdPlayer" name="cdPlayer" required>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+      
+      <label for="powerWindows">Power Windows:</label>
+      <select id="powerWindows" name="powerWindows" required>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+
+      <label for="powerSteering">Power Steering:</label>
+      <select id="powerSteering" name="powerSteering" required>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+      
+      <label for="radio">Radio:</label>
+      <select id="radio" name="radio" required>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+      
+      <label for="mistLamps">Mist Lamps:</label>
+      <select id="mistLamps" name="mistLamps" required>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+      
+      <label for="sportsModel">Sports Model:</label>
+      <select id="sportsModel" name="sportsModel" required>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+      
+      <label for="metallicRim">Metallic Rim:</label>
+      <select id="metallicRim" name="metallicRim" required>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+          
+      <button type="submit" class="button">Submit</button>
+    </form>
+    </div>
+  </body>
+</html>
