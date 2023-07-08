@@ -1,8 +1,8 @@
 Flask
-pybind11
-cppimport
 jupyter
 numpy
 Pandas
-scikit-learn
+scikit-learn==1.0.2
 joblib
+pybind11
+cppimport

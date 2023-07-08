@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>Car Price Prediction</title>
   <style>
@@ -24,7 +24,7 @@
     
     label {
       display: block;
-      margin-bottom: 10px;
+      margin-top: 10px;
       font-weight: bold;
     }
     
@@ -57,42 +57,47 @@
     .button:hover {
       background-color: #45a049;
     }
+
+    .price-display {
+      text-align: center;
+      padding: 20px;
+      margin-top: 10px;
+      border: 1px solid #cccccc;
+      border-radius: 4px;
+    }
   </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
   <div class="container">
     <h1>Car Price Prediction</h1>
-    <form method="post" action="{{url_for('predict')}}">
+    <form id="prediction-form" method="post">
       <label for="carAge">Car Age:</label>
-      <input type="number" id="carAge" name="carAge" required>
+      <input type="number" id="carAge" name="carAge" placeholder="age in months, e.g. 24" required>
       
       <label for="kmDriven">KM Driven:</label>
       <input type="number" id="kmDriven" name="kmDriven" required>
       
       <label for="fuelType">Fuel Type:</label>
-      <select id="fuelType" name="fuelType" required size="2">
-        <option value="Diesel">Diesel</option>
-        <option value="Petrol">Petrol</option>
-      </select>
-      
+      <input type="radio" id="fuelType" name="fuelType" value="Diesel" required>Diesel
+      <input type="radio" id="fuelType" name="fuelType" value="Petrol" required>Petrol
+
       <label for="horsepower">Horsepower:</label>
       <input type="number" id="horsepower" name="horsepower" required>
       
       <label for="color">Color:</label>
-      <select id="color" name="color" required size="5">
-        <option value="Silver">Silver</option>
-        <option value="Grey">Grey</option>
-        <option value="Black">Black</option>
-        <option value="Blue">Blue</option>
-        <option value="Red">Red</option>
-      </select>
-      
-      <label for="automatics">Automatics:</label>
-      <select id="automatics" name="automatics" required>
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-      </select>
-      
+      <input type="radio" id="color" name="color" value="Silver" required>Silver
+      <input type="radio" id="color" name="color" value="Grey" required>Grey
+      <input type="radio" id="color" name="color" value="Black" required>Black
+      <input type="radio" id="color" name="color" value="Blue" required>Blue
+      <input type="radio" id="color" name="color" value="Red" required>Red
+
+      <label for="automatics">Automatic:</label>
+      <input type="radio" id="automatics" name="automatics" value="1" required>Yes
+      <input type="radio" id="automatics" name="automatics" value="0" required>No
+
       <label for="cc">CC:</label>
       <input type="number" id="cc" name="cc" required>
       
@@ -106,79 +111,74 @@
       <input type="number" id="gears" name="gears" min="1" max="6" required>
       
       <label for="manufacturerGuarantee">Manufacturer Guarantee:</label>
-      <select id="manufacturerGuarantee" name="manufacturerGuarantee" required>
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-      </select>
-      
+      <input type="radio" id="manufacturerGuarantee" name="manufacturerGuarantee" value="1" required>Yes
+      <input type="radio" id="manufacturerGuarantee" name="manufacturerGuarantee" value="0" required>No
+
       <label for="antilockBrakes">Antilock Brakes:</label>
-      <select id="antilockBrakes" name="antilockBrakes" required>
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-      </select>
-      
+      <input type="radio" id="antilockBrakes" name="antilockBrakes" value="1" required>Yes
+      <input type="radio" id="antilockBrakes" name="antilockBrakes" value="0" required>No
+
       <label for="driverAirbags">Driver Airbags:</label>
-      <select id="driverAirbags" name="driverAirbags" required>
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-      </select>
-      
+      <input type="radio" id="driverAirbags" name="driverAirbags" value="1" required>Yes
+      <input type="radio" id="driverAirbags" name="driverAirbags" value="0" required>No
+
       <label for="passengerAirbags">Passenger Airbags:</label>
-      <select id="passengerAirbags" name="passengerAirbags" required>
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-      </select>
-      
+      <input type="radio" id="passengerAirbags" name="passengerAirbags" value="1" required>Yes
+      <input type="radio" id="passengerAirbags" name="passengerAirbags" value="0" required>No
+
       <label for="airConditioner">Air Conditioner:</label>
-      <select id="airConditioner" name="airConditioner" required>
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-      </select>
-      
+      <input type="radio" id="airConditioner" name="airConditioner" value="1" required>Yes
+      <input type="radio" id="airConditioner" name="airConditioner" value="0" required>No
+
       <label for="cdPlayer">CD Player:</label>
-      <select id="cdPlayer" name="cdPlayer" required>
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-      </select>
-      
+      <input type="radio" id="cdPlayer" name="cdPlayer" value="1" required>Yes
+      <input type="radio" id="cdPlayer" name="cdPlayer" value="0" required>No
+
       <label for="powerWindows">Power Windows:</label>
-      <select id="powerWindows" name="powerWindows" required>
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-      </select>
+      <input type="radio" id="powerWindows" name="powerWindows" value="1" required>Yes
+      <input type="radio" id="powerWindows" name="powerWindows" value="0" required>No
 
       <label for="powerSteering">Power Steering:</label>
-      <select id="powerSteering" name="powerSteering" required>
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-      </select>
-      
+      <input type="radio" id="powerSteering" name="powerSteering" value="1" required>Yes
+      <input type="radio" id="powerSteering" name="powerSteering" value="0" required>No
+
       <label for="radio">Radio:</label>
-      <select id="radio" name="radio" required>
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-      </select>
-      
+      <input type="radio" id="radio" name="radio" value="1" required>Yes
+      <input type="radio" id="radio" name="radio" value="0" required>No
+
       <label for="mistLamps">Mist Lamps:</label>
-      <select id="mistLamps" name="mistLamps" required>
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-      </select>
-      
+      <input type="radio" id="mistLamps" name="mistLamps" value="1" required>Yes
+      <input type="radio" id="mistLamps" name="mistLamps" value="0" required>No
+
       <label for="sportsModel">Sports Model:</label>
-      <select id="sportsModel" name="sportsModel" required>
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-      </select>
-      
+      <input type="radio" id="sportsModel" name="sportsModel" value="1" required>Yes
+      <input type="radio" id="sportsModel" name="sportsModel" value="0" required>No
+
       <label for="metallicRim">Metallic Rim:</label>
-      <select id="metallicRim" name="metallicRim" required>
-        <option value="1">Yes</option>
-        <option value="0">No</option>
-      </select>
-          
+      <input type="radio" id="metallicRim" name="metallicRim" value="1" required>Yes
+      <input type="radio" id="metallicRim" name="metallicRim" value="0" required>No
       <button type="submit" class="button">Submit</button>
     </form>
-    </div>
+    <div id="result"> </div>
+  </div>
+    <script>
+      $(document).on('submit', '#prediction-form', function(e) {
+        console.log('received request');
+          e.preventDefault();
+          var formData = $(this).serialize();
+          $.ajax({
+            url:'/predict',
+            type: 'POST',
+            data: formData,
+            success: function(response) {
+              $('#result').addClass("price-display")
+              $('#result').html(response);
+            },
+            error: function(error) {
+              console.log(error);
+            }
+          });
+        });
+    </script>
   </body>
 </html>
